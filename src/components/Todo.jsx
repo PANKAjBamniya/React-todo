@@ -11,6 +11,10 @@ const Todo = () => {
     {id: 5,text: "Repeat",},
   ]);
 
+  const handleDeleteButton = ((id) => {
+    setTodos(todos.filter((Todo) => Todo.id !== id))
+  })
+
   return (
     <div className='w-full h-[90vh] flex gap-2 flex-col items-center pt-2 dark:bg-gray-700'>
       <form className='p-6 w-[90%] bg-gray-400 dark:bg-zinc-800 rounded flex gap-2 flex-col'>
@@ -28,7 +32,7 @@ const Todo = () => {
           </button>
         </span>
       </form>
-      <ListItems todos={todos} />
+      <ListItems todos={todos} handleDeleteButton={handleDeleteButton}/>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ListItems = ({todos}) => {
+const ListItems = ({todos,handleDeleteButton}) => {
     
   return (
     <>
@@ -13,6 +13,9 @@ const ListItems = ({todos}) => {
               <button
               className='bg-yellow-600 text-white rounded py-1 px-3'>Edit</button>
               <button
+              onClick={()=>{
+                handleDeleteButton(todo.id)
+              }}
               className='bg-red-500 text-white rounded py-1 px-3'>Delete</button>
               </div>
             </li>
