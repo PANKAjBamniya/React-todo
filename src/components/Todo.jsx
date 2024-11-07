@@ -13,13 +13,12 @@ const Todo = () => {
     e.preventDefault();
 
     if (edit.isEdit) {
-      // Update the existing task
+
       setTodos(todos.map(todo => 
         todo.id === edit.Todo.id ? { ...todo, text: newtask } : todo
       ));
       setEdit({ Todo: {}, isEdit: false });
     } else {
-      // Add a new task
       const newTodo = {
         id: crypto.randomUUID(),
         text: newtask,
@@ -36,7 +35,7 @@ const Todo = () => {
 
   const handleEditButton = (todo) => {
     setEdit({ Todo: todo, isEdit: true });
-    setNewtask(todo.text); // Pre-fill input with selected todo text
+    setNewtask(todo.text); 
   };
 
   return (
