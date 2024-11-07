@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ListItems = ({todos,handleDeleteButton}) => {
+const ListItems = ({todos,handleDeleteButton,handleEditButton}) => {
     
   return (
     <>
@@ -11,6 +11,9 @@ const ListItems = ({todos,handleDeleteButton}) => {
               {todo.text}
               <div className='flex gap-2'>
               <button
+              onClick={() => {
+                handleEditButton(todo)
+              }}
               className='bg-yellow-600 text-white rounded py-1 px-3'>Edit</button>
               <button
               onClick={()=>{
