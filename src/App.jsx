@@ -1,22 +1,18 @@
-import React,{useState} from 'react'
+import React,{useContext, useState} from 'react'
 import Todo from './components/Todo';
 import Navbar from './components/Navbar';
+import TodoContext, { TodoProvider } from './context/TodoContext';
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false)
-
-  const handletheme = () => {
-    if(darkMode){
-      setDarkMode(false)
-    }else{
-      setDarkMode(true)
-    }
-  }
+  // const { darkMode } = useContext(TodoContext)
+  
   return (
-   <div className={darkMode ? 'dark' : ''}>
-    <Navbar handletheme={handletheme} darkMode={darkMode}/>
-      <Todo/>
-   </div>
+    <TodoProvider>
+      <div>
+        <Navbar />
+        <Todo/>
+      </div> 
+    </TodoProvider>
 
   )
 }

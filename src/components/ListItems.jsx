@@ -1,24 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import TodoContext from '../context/TodoContext'
 
-const ListItems = ({todos,handleDeleteButton,handleEditButton}) => {
+const ListItems = () => {
+
+  const {todos} = useContext(TodoContext)
     
   return (
     <>
-       <ul className='p-8 w-[90%] bg-gray-400 shadow-xl dark:bg-zinc-800 rounded flex gap-2 flex-col'>
+       <ul className=' w-[90%] shadow-xl rounded flex gap-2 flex-col'>
           {todos.map((todo) => (
-            <li 
-            className='w-full flex items-center justify-between bg-white py-2 rounded px-3'>
+            <li key={todo.id}
+            className='w-full flex items-center justify-between bg-gray-400 dark:bg-zinc-800 py-3 text-white rounded px-4'>
               {todo.text}
               <div className='flex gap-2'>
+              <button className='bg-yellow-600 text-white rounded py-1 px-3'>Edit</button>
               <button
-              onClick={() => {
-                handleEditButton(todo)
-              }}
-              className='bg-yellow-600 text-white rounded py-1 px-3'>Edit</button>
-              <button
-              onClick={()=>{
-                handleDeleteButton(todo.id)
-              }}
               className='bg-red-500 text-white rounded py-1 px-3'>Delete</button>
               </div>
             </li>
