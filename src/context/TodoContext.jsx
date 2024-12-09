@@ -7,17 +7,21 @@ export const TodoProvider = ({children}) => {
 
     const [darkMode, setDarkMode] = useState(false)
 
-    const handletheme = () => {
-        setDarkMode(!darkMode)
-    }
-
     const [todos, setTodos] = useState([
         { id: 1, text: 'Buy milk'},
         { id: 2, text: 'Walk the dog'}
       ]);
 
+    const handletheme = () => {
+        setDarkMode(!darkMode)
+    }
+
+    const handleDelete = ((id) => {
+        setTodos(todos.filter((todo)=> todo.id !== id))
+    })
+
     return(
-        <TodoContext.Provider value={{ todos , darkMode, handletheme }}>
+        <TodoContext.Provider value={{ todos , darkMode, handletheme, handleDelete}}>
             {children}
         </TodoContext.Provider>
     );
