@@ -13,7 +13,7 @@ const Navbar = () => {
         <h1 className='text-3xl bold'>React Todo</h1>
         <button 
         onClick={handletheme}
-        className='py-2 text-black text-2xl rounded border-2	 px-4' >
+        className={darkMode ? 'py-2 text-2xl rounded border-2 px-4' : 'py-2 text-2xl rounded border-2 px-4' }>
           {darkMode ? <MdWbSunny /> : <IoMoonSharp />}
         </button>
     </div>

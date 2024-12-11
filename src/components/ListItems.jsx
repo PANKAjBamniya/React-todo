@@ -3,7 +3,7 @@ import TodoContext from '../context/TodoContext'
 
 const ListItems = () => {
 
-  const {todos,darkMode ,handleDelete} = useContext(TodoContext)
+  const {todos,darkMode ,handleDelete ,handleEditButton} = useContext(TodoContext)
     
   return (
     <>
@@ -15,7 +15,11 @@ const ListItems = () => {
             : 'w-full flex items-center justify-between bg-gray-800 py-3 text-white rounded px-4'}>
               {todo.text}
               <div className='flex gap-2'>
-              <button className='bg-yellow-600 text-white rounded py-1 px-3'>Edit</button>
+              <button
+              onClick={() => {
+                handleEditButton(todo)
+              }}
+              className='bg-yellow-600 text-white rounded py-1 px-3'>Edit</button>
               <button
               onClick={(() => {
                 handleDelete(todo.id)
