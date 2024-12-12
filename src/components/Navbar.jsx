@@ -9,11 +9,11 @@ const Navbar = () => {
   const { handletheme , darkMode}= useContext(TodoContext)
 
   return (
-    <div className={darkMode ? 'w-full flex justify-between px-7 py-3 shadow-xl ': 'w-full flex justify-between px-7 py-3 shadow-xl bg-gray-800 text-white'}>
+    <div className='w-full flex justify-between px-7 py-3 shadow-xl dark:bg-gray-800 dark:text-white'>
         <h1 className='text-3xl bold'>React Todo</h1>
         <button 
         onClick={handletheme}
-        className={darkMode ? 'py-2 text-2xl rounded border-2 px-4' : 'py-2 text-2xl rounded border-2 px-4' }>
+        className='py-2 text-2xl rounded border-2 px-4'>
           {darkMode ? <MdWbSunny /> : <IoMoonSharp />}
         </button>
     </div>

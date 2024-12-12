@@ -18,10 +18,11 @@ export const TodoProvider = ({children}) => {
         setTodos(todos.filter((todo)=> todo.id !== id))
     })
 
-    const handleAddButton = ((text) => {
+    const handleAddButton = ((text , description) => {
         const newTodo = {
             id: crypto.randomUUID(),
             text: text,
+            description: description
         }
         setTodos([...todos, newTodo])
     })
