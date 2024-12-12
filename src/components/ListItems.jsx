@@ -15,7 +15,7 @@ const ListItems = () => {
             className='w-full relative flex items-start justify-between bg-gray-400 dark:bg-gray-800 py-3 text-white rounded px-4'>
               <div className='flex  flex-col space-y-3'>
               <h1 className='text-2xl font-sans'>{todo.text}</h1>
-              <p className='w-[80%]'>{todo.description}</p>
+              <p className='w-1/3'>{todo.description}</p>
               </div>
               <div className='flex gap-2 absolute top-4 right-4'>
               <button
