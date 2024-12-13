@@ -22,6 +22,7 @@ const Todo = () => {
 
   useEffect(() => {
     setText(edit.todo.text)
+    setDescription(edit.todo.description)
   },[edit])
 
 
