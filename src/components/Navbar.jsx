@@ -1,12 +1,8 @@
 import React from 'react'
 import { MdWbSunny } from "react-icons/md";
 import { IoMoonSharp } from "react-icons/io5";
-import { useContext } from 'react';
-import TodoContext from '../context/TodoContext';
 
-const Navbar = () => {
-
-  const { handletheme , darkMode}= useContext(TodoContext)
+const Navbar = ({darkMode , handletheme}) => {
 
   return (
     <div className='w-full flex justify-between px-7 py-3 shadow-xl dark:bg-gray-800 dark:text-white'>
