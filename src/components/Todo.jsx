@@ -1,8 +1,33 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import ListItems from './ListItems';
-// import TodoContext from '../context/TodoContext';
+import TodoContext from '../context/TodoContext';
+
+
 
 const Todo = () => {
+
+const [text, setText] = useState(" ")
+const [description, setDescription] = useState(" ")
+
+const {dispatch} = useContext(TodoContext);
+
+const handleSubmit = ((e) => {
+  e.preventDefault();
+  const newTodo = {
+    id : crypto.randomUUID(),
+    text: text,
+    description: description
+  }
+
+  dispatch( {
+    type: 'ADD_TODO',
+    payload: newTodo
+  })
+
+  
+  setText(" ")
+  setDescription(" ")
+})
  
 
   return (
@@ -12,14 +37,23 @@ const Todo = () => {
       >
         <span className='flex gap-3 flex-col'>
           <input
+          value={text}
+          onChange={ (e) => {
+            setText(e.target.value)
+          }}
             type="text"
             placeholder='Enter your Task'
             className='py-3 rounded px-4 w-[100%]'
             required
           />
           <textarea
+          value={description}
+          onChange={ (e) => {
+            setDescription(e.target.value)
+          }}
           className='outline-none rounded p-4' placeholder='Description' rows="4"></textarea>
           <button
+          onClick={handleSubmit}
             type="submit"
             className='bg-green-600 text-white py-3 px-8 rounded'
           >

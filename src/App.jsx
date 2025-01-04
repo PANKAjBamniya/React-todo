@@ -8,7 +8,7 @@ const App = () => {
   const [darkMode, setDarkMode] = useState(false)
   const handletheme = () => {
     setDarkMode(!darkMode)
-}
+  }
   
   return (
 
