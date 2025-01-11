@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ListItems from './ListItems';
 import TodoContext from '../context/TodoContext';
 
@@ -9,7 +9,9 @@ const Todo = () => {
 const [text, setText] = useState(" ")
 const [description, setDescription] = useState(" ")
 
-const {dispatch} = useContext(TodoContext);
+const {dispatch , edit } = useContext(TodoContext);
+
+
 
 const handleSubmit = ((e) => {
   e.preventDefault();
@@ -19,6 +21,11 @@ const handleSubmit = ((e) => {
     description: description
   }
 
+
+  edit.isEdit ? dispatch( {
+    type: 'UPDATE_TODO',
+    payload: {id:edit.todos.id , text , description}
+  }) :
   dispatch( {
     type: 'ADD_TODO',
     payload: newTodo
@@ -28,6 +35,11 @@ const handleSubmit = ((e) => {
   setText(" ")
   setDescription(" ")
 })
+
+ useEffect(() => {
+  setText(edit.todos.text)
+  setDescription(edit.todos.description)
+ }, [edit])
  
 
   return (
@@ -51,13 +63,17 @@ const handleSubmit = ((e) => {
           onChange={ (e) => {
             setDescription(e.target.value)
           }}
-          className='outline-none rounded p-4' placeholder='Description' rows="4"></textarea>
+          className='outline-none rounded p-4' placeholder='Description' rows="4"
+          required
+          ></textarea>
           <button
           onClick={handleSubmit}
             type="submit"
             className='bg-green-600 text-white py-3 px-8 rounded'
           >
-             Add
+            {
+              edit.isEdit ? "Update" : "Add"
+            }
           </button>
         </span>
       </form>

@@ -8,10 +8,18 @@ const ListCard = ({todo}) => {
 
   const { dispatch } = useContext(TodoContext);
 
+
   const handleDelete = () => {
     dispatch({
       type : 'DELETE_TODO',
       payload : todo.id
+    })
+  }
+
+  const handleEdit = () => {
+    dispatch({
+      type : 'EDIT_TODO',
+      payload : todo
     })
   }
 
@@ -27,6 +35,7 @@ const ListCard = ({todo}) => {
       </div>
       <div className="flex gap-2 absolute top-4 right-4">
         <button
+        onClick={handleEdit}
           className="bg-yellow-600 text-white rounded py-2 px-3 hover:bg-yellow-500"
         >
           <MdEditSquare className="text-xl" />
